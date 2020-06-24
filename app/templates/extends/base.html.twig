@@ -10,6 +10,9 @@
     <body>
         {% block body %}
             {% include("Navbar/navbar.html.twig") %}
+            <main>
+                {% block main %}{% endblock %}
+            </main>
         {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

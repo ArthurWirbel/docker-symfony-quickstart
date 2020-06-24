@@ -8,6 +8,6 @@ class ListController extends AbstractController
 {
     public function list()
     {
-        return $this->render('base.html.twig', []);
+        return $this->render('list.html.twig', []);
     }
 }

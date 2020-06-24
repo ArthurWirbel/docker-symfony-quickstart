@@ -1,0 +1,53 @@
+{% extends 'extends/base.html.twig' %}
+
+{% block main %}
+<form  method="post" action="{{ path('formAction') }}">
+	<div class="row">
+		<div class="col-4 offset-4">
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+			            <label for="email">First Name</label>
+                    </div>
+                    <div class="row">
+			            <input id="firstName" name="name" type="text">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <label for="email">Last Name</label>
+                    </div>
+                    <div class="row">
+			            <input id="lastName" name="name" type="text">
+                    </div>
+                </div>
+			</div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+			            <select name="country"> 
+                            <option>France</option>
+                            <option>Belgique</option>
+                            <option>Allemagne</option>
+                        </select>
+                    </div>
+                </div>
+			</div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+			            <label for="email">Phone Number</label>
+                    </div>
+                    <div class="row">
+			            <input id="name" name="name" type="text">
+                    </div>
+                </div>
+			</div>
+				<div class="input-field col s3">
+					<button class="btn email_btn" type="submit" name="action">Je m'inscris</button>
+				</div>
+			</div>
+        </div>
+    </div>
+</form>
+{% endblock %}

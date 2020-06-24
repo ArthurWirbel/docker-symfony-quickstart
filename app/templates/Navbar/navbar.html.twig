@@ -1,7 +1,21 @@
-<div class="container">
-    <img href="https://www.stores-discount.com/fstrz/r/s/cdn.stores-discount.com/images/header/logo-stores-discount.svg?frz-v=707" alt="logo"/>
-    <div>
-        <a href="{{ path('index') }}">Link 1</a>
-        <a href="{{ path('list') }}">Link 2</a>
-    </div>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <div class="row">
+                <div class="col-4">
+                    <img href="https://www.stores-discount.com/fstrz/r/s/cdn.stores-discount.com/images/header/logo-stores-discount.svg?frz-v=707" alt="logo"/>
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-2">
+                            <a href="{{ path('index') }}">Link 1</a>
+                        </div>
+                        <div class="col-2">
+                            <a href="{{ path('list') }}">Link 2</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 </div>

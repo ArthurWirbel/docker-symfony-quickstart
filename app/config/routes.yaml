@@ -1,6 +1,6 @@
 index:
     path: /
-    controller: App\Controller\LandingController::index
+    controller: App\Controller\IndexController::index
 
 list:
     path: /list
