@@ -1,5 +1,29 @@
 {% extends 'extends/base.html.twig' %}
 
 {% block main %}
-Au revoir
+{% for client in clients %}
+<table>
+    <tr>
+        <td>
+        {{ client.id }}
+        </td>
+        <td>
+        {{ client.firstName }}
+        </td>
+        <td>
+        {{ client.lastName }}
+        </td>
+        <td>
+        {{ client.country }}
+        </td>
+        <td>
+        {{ client.nationalPhoneNumber }}
+        </td>
+        <td>
+        {{ client.internationalPhoneNumber }}
+        </td>
+    </tr>
+</table>
+{% endfor %}
+
 {% endblock %}

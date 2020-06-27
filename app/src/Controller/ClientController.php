@@ -7,22 +7,21 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Client;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class ClientController extends AbstractController
 {
     /**
      * @Route("/newclient", name="newclient")
      */
-    public function createClient(): Response
+    public function createClient(Request $request): Response
     {
-        // you can fetch the EntityManager via $this->getDoctrine()
-        // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
         $entityManager = $this->getDoctrine()->getManager();
 
         $client = new Client();
-        $client->setFirstName("Arthur");
-        $client->setLastName("Wirbel");
-        $client->setCountry("France");
+        $client->setFirstName($request->get('firstName'));
+        $client->setLastName($request->get('lastName'));
+        $client->setCountry($request->get('country'));
         $client->setNationalPhoneNumber("06 33 58 95 61");
         $client->setInternationalPhoneNumber("+33 6 33 58 95 61");
 
@@ -38,13 +37,12 @@ class ClientController extends AbstractController
     /**
      * @Route("/listclient", name="listclient")
      */
-    public function listClient(): JsonResponse
+    public function listClient()
     {
         $client = $this->getDoctrine()
         ->getRepository(Client::class)
         ->findAll();
-        print_r($client);
-        return new JsonResponse($client);
+        return $this->render('list.html.twig', array('clients' => $client));
     }
 
     /**
