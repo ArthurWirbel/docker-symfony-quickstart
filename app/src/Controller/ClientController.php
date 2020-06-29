@@ -15,24 +15,34 @@ class ClientController extends AbstractController
     /**
      * @Route("/newclient", name="newclient")
      */
-    public function createClient(Request $request): Response
+    public function createClient(Request $request, PhoneCheck $phoneCheck): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
-        $client = new Client();
-        $client->setFirstName($request->get('firstName'));
-        $client->setLastName($request->get('lastName'));
-        $client->setCountry($request->get('country'));
-        $client->setNationalPhoneNumber("06 33 58 95 61");
-        $client->setInternationalPhoneNumber("+33 6 33 58 95 61");
+        // Check phone number
 
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($client);
+        $message = $phoneCheck->checkPhoneNumber($request->get('phoneNumber'), $request->get('country'));
+        $data = json_decode($message);
+        if ($data[0]->output->isValid) {
+            // Save client and success
+            $client = new Client();
+            $client->setFirstName($request->get('firstName'));
+            $client->setLastName($request->get('lastName'));
+            $client->setCountry($request->get('country'));
+            $client->setNationalPhoneNumber($data[0]->output->national);
+            $client->setInternationalPhoneNumber($data[0]->output->international);
 
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
+            $entityManager->persist($client);
+
+            $entityManager->flush();
 
         return new Response('Saved new client with id '.$client->getId());
+        
+    } else {
+            return new Response('bad number');
+        }
+    
+        
     }
 
     /**
@@ -51,8 +61,9 @@ class ClientController extends AbstractController
      */
     public function new(PhoneCheck $phoneCheck): Response
     {
-        $message = $phoneCheck->checkPhoneNumber();
-        var_dump($message);
+        $message = $phoneCheck->checkPhoneNumber("0633589561", "FR");
+        $data = json_decode($message);
+        var_dump($data[0]->output->isValid);
         return new Response('cool');
     }
 

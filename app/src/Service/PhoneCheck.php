@@ -6,13 +6,13 @@ use Symfony\Component\HttpClient\HttpClient;
 
 class PhoneCheck
 {
-    public function checkPhoneNumber()
+    public function checkPhoneNumber($number, $country)
     {
         $client = HttpClient::create();
         
         $data = new \stdClass();
-        $data->phoneNumber = "0633589561";
-        $data->countryCode = "FR";
+        $data->phoneNumber = $number;
+        $data->countryCode = $country;
 
         $tab = array();
 
