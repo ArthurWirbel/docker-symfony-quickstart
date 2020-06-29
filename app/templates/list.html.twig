@@ -1,8 +1,33 @@
 {% extends 'extends/base.html.twig' %}
 
 {% block main %}
-{% for client in clients %}
+<div class="container">
+<div class="row pt-3">
+<div class="col-sm-6 offset-sm-3">
 <table>
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                First name
+            </td>
+            <td>
+                Last name
+            </td>
+            <td>
+                Country
+            </td>
+            <td>
+                national
+            </td>
+            <td>
+                international
+            </td>
+        </tr>
+    </thead>
+    {% for client in clients %}
     <tr>
         <td>
         {{ client.id }}
@@ -23,7 +48,10 @@
         {{ client.internationalPhoneNumber }}
         </td>
     </tr>
+    {% endfor %}
 </table>
-{% endfor %}
+</div>
+</div>
+</div>
 
 {% endblock %}

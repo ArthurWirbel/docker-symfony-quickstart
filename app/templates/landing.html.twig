@@ -2,30 +2,30 @@
 
 {% block main %}
 <form  method="post" action="{{ path('newclient') }}">
-	<div class="row">
-		<div class="col-4 offset-4">
+	<div class="row pt-3">
+		<div class="col-4 offset-4 border-simple">
             <div class="row">
                 <div class="col-6">
-                    <div class="row">
+                    <div class="row padding1">
 			            <label for="email">First Name</label>
                     </div>
-                    <div class="row">
-			            <input id="firstName" name="firstName" type="text">
+                    <div class="row padding1">
+			            <input id="firstName" name="firstName" type="text" class="full-length">
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="row">
+                    <div class="row padding1">
                         <label for="email">Last Name</label>
                     </div>
-                    <div class="row">
-			            <input id="lastName" name="lastName" type="text">
+                    <div class="row padding1">
+			            <input id="lastName" name="lastName" type="text" class="full-length">
                     </div>
                 </div>
 			</div>
             <div class="row">
                 <div class="col-12">
-                    <div class="row">
-			            <select name="country"> 
+                    <div class="row padding1">
+			            <select name="country" class="full-length"> 
                             <option>FR</option>
                             <option>BE</option>
                             <option>GER</option>
@@ -36,18 +36,27 @@
 			</div>
             <div class="row">
                 <div class="col-12">
-                    <div class="row">
+                    <div class="row padding1">
 			            <label for="email">Phone Number</label>
                     </div>
-                    <div class="row">
-			            <input id="phoneNumber" name="phoneNumber" type="text">
+                    <div class="row padding1">
+			            <input id="phoneNumber" name="phoneNumber" type="text" class="full-length">
                     </div>
+                    {% if errorNumber %}
+                    <div class="row padding1 redColor">
+			            Votre numéro de téléphone n'est pas valide
+                    </div>
+                    {% endif %}
                 </div>
 			</div>
-				<div class="input-field col s3">
-					<button class="btn" type="submit" name="action">Call me</button>
+            <div class="row padding-btn">
+                <div class="col-12">
+				<div class="input-field">
+					<button class="btn-submit btn" type="submit" name="action">Call me</button>
 				</div>
+                </div>
 			</div>
+            </div>
         </div>
     </div>
 </form>

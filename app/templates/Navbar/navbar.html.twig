@@ -1,21 +1,29 @@
+<div class="container border-simple">
+<div class="row padding5">
+<div class="col-12">
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
             <div class="row">
-                <div class="col-4">
-                    <img href="https://www.stores-discount.com/fstrz/r/s/cdn.stores-discount.com/images/header/logo-stores-discount.svg?frz-v=707" alt="logo"/>
+                <div class="col-sm-4">
+                    <img class="logo" src="{{ asset('images/logo.png') }}" alt="logo"/>
                 </div>
-                <div class="col-8">
-                    <div class="row">
-                        <div class="col-2">
-                            <a href="{{ path('index') }}">Link 1</a>
+                <div class="col-sm-7 offset-sm-1 margin-auto">
+                    <div class="row full-height">
+                        <div class="col-3 align-center border-simple">
+                            <a href="{{ path('index') }}">Accueil</a>
                         </div>
-                        <div class="col-2">
-                            <a href="{{ path('listclient') }}">Link 2</a>
+                        <div class="col-3 align-center border-simple">
+                            <a href="{{ path('listclient') }}">Liste des clients</a>
+                        </div>
+                        <div class="col-5 align-center border-simple">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+</div>
+</div>
+</div>
 </div>

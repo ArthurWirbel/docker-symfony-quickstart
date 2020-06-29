@@ -36,13 +36,19 @@ class ClientController extends AbstractController
 
             $entityManager->flush();
 
-        return new Response('Saved new client with id '.$client->getId());
+            return $this->redirectToRoute('success', array());
         
     } else {
-            return new Response('bad number');
+            return $this->render('landing.html.twig', array('errorNumber' => true));
         }
-    
-        
+    }
+
+    /**
+     * @Route("/success", name="success")
+     */
+    public function success()
+    {
+        return $this->render('success.html.twig', array());
     }
 
     /**
@@ -55,26 +61,4 @@ class ClientController extends AbstractController
         ->findAll();
         return $this->render('list.html.twig', array('clients' => $client));
     }
-
-    /**
-     * @Route("/checkPhone", name="checkPhone")
-     */
-    public function new(PhoneCheck $phoneCheck): Response
-    {
-        $message = $phoneCheck->checkPhoneNumber("0633589561", "FR");
-        $data = json_decode($message);
-        var_dump($data[0]->output->isValid);
-        return new Response('cool');
-    }
-
-    /**
-     * @Route("/check", name="check")
-     */
-    public function checkConnection(): Response
-    {
-        $em = $this->getDoctrine()->getManager();
-        $em->getConnection()->connect();
-        $connected = $em->getConnection()->isConnected();
-    }
-
 }

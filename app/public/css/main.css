@@ -1,0 +1,61 @@
+.navbar-perso {
+    margin-top: 20px;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.border-simple {
+    border: 1px solid black;
+}
+
+.padding5{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.padding1 {
+    padding: 10px 10px 0 10px;
+}
+
+.full-length {
+    width:100%;
+}
+
+.btn-submit {
+    background-color: blue;
+    color: #ffffff;
+}
+
+.padding-btn {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.margin-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.logo {
+    width: 100%;
+}
+
+.redColor {
+    color: red;
+}
+
+.greenColor {
+    color: green;
+}
+
+table,
+td {
+    border: 1px solid #333;
+    padding: 2px;
+}
