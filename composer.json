@@ -1,5 +1,6 @@
 {
     "require": {
-        "symfony/orm-pack": "^1.0"
+        "symfony/orm-pack": "^1.0",
+        "symfony/http-client": "^5.1"
     }
 }

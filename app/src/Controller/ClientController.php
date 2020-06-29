@@ -8,6 +8,7 @@ use App\Entity\Client;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use App\Service\PhoneCheck;
 
 class ClientController extends AbstractController
 {
@@ -43,6 +44,16 @@ class ClientController extends AbstractController
         ->getRepository(Client::class)
         ->findAll();
         return $this->render('list.html.twig', array('clients' => $client));
+    }
+
+    /**
+     * @Route("/checkPhone", name="checkPhone")
+     */
+    public function new(PhoneCheck $phoneCheck): Response
+    {
+        $message = $phoneCheck->checkPhoneNumber();
+        var_dump($message);
+        return new Response('cool');
     }
 
     /**
