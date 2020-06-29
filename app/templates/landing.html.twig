@@ -40,24 +40,53 @@
 			            <label for="email">Phone Number</label>
                     </div>
                     <div class="row padding1">
-			            <input id="phoneNumber" name="phoneNumber" type="text" class="full-length">
+			            <input onblur="checkPhone()" id="phoneNumber" name="phoneNumber" type="text" class="full-length">
                     </div>
                     {% if errorNumber %}
                     <div class="row padding1 redColor">
 			            Votre numéro de téléphone n'est pas valide
                     </div>
                     {% endif %}
+                    <div id="error" class="row padding1 redColor">
+			            
+                    </div>
                 </div>
 			</div>
             <div class="row padding-btn">
                 <div class="col-12">
-				<div class="input-field">
-					<button class="btn-submit btn" type="submit" name="action">Call me</button>
-				</div>
+				    <div class="input-field">
+					    <button onclick="checkForm()" class="btn-submit btn" id="submit" type="submit" name="action">Call me</button>
+				    </div>
                 </div>
 			</div>
             </div>
         </div>
     </div>
 </form>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        function checkPhone () {
+            let phoneNumber = document.getElementById("phoneNumber").value;
+            if (phoneNumber.length !== 10) {
+                document.getElementById("error").innerHTML = "Numéro de téléphone non valide";
+            } else {
+                document.getElementById("error").innerHTML = "";
+            }
+        }
+
+        function checkForm () {
+            let phoneNumber = document.getElementById("phoneNumber").value;
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+
+            if (phoneNumber.length !== 10 || firstName.length === 0 || lastName.length === 0 ) {
+                document.getElementById("error").innerHTML = "Veuillez remplir toutes les informations";
+                event.preventDefault();
+            } else {
+                document.getElementById("submit").disabled = false;
+            }
+        }
+
+    </script>
 {% endblock %}
